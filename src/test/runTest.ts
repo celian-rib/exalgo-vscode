@@ -2,6 +2,7 @@ import * as path from 'path';
 
 import { runTests } from 'vscode-test';
 
+// eslint-disable-next-line require-jsdoc
 async function main() {
 	try {
 		// The folder containing the Extension Manifest package.json
