@@ -1,6 +1,5 @@
 import * as primitives from './primitives';
 import * as parameters from './parameters';
-import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
 
 
 /**
