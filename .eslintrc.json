@@ -42,6 +42,7 @@
                 "FunctionExpression": true
             }
         }],
+        "eol-last": "error",
         "@typescript-eslint/no-empty-function": 0
     }
 }
