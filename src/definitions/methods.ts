@@ -101,7 +101,7 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 			{
 				type: 'Sommet',
 				enterType: parameters.EnterParameter.E
-	 		}
+			}
 		],
 		description: 'Supprime une arête dans le graphe',
 		return: null,
@@ -164,7 +164,7 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 		description: '',
 		return: null,
 	},
-]
+];
 
 export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
 	{
@@ -226,7 +226,7 @@ export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
 	{
 		name: 'nombreArc',
 		parameters: [],
-		description: "Compte le nombre d'arc du graphe",
+		description: 'Compte le nombre d\'arc du graphe',
 		return: primitives.ExalgoPrimitives.Entier,
 	},
 	{
@@ -235,4 +235,4 @@ export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
 		description: 'Retourne un tableau de tous les sommets',
 		return: 'Sommet[]',
 	},
-]
+];
