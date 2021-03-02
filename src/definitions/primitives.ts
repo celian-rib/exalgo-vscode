@@ -1,4 +1,3 @@
-
 export interface IExalgoType {
 	primitiv: string,
 }
