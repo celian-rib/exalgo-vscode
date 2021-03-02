@@ -1,6 +1,6 @@
 /* eslint-disable */
 import * as vscode from 'vscode';
-import { getExalgoTypesString } from './ExalgoTypes';
+import { getExalgoTypesString } from './definitions/primitives';
 
 export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 
