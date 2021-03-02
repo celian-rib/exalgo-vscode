@@ -7,6 +7,6 @@ export enum EnterParameter {
 }
 
 export interface IParameter {
-	type: primitives.IExalgoType | string,
+	type: primitives.ExalgoPrimitives | string,
 	enterType: EnterParameter,
 }
