@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(exalgoCompletion);
 
 	// Show a popup in vscode
-	vscode.window.showInformationMessage('Exalgo language support activated !');
+	vscode.window.showInformationMessage('Extension Exalgo activée !');
 	console.log('Exalgo extension activated');
 }
 
