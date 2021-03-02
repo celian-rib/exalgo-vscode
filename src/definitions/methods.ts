@@ -130,16 +130,17 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 		description: 'Retourne un tableau de toutes les arêtes',
 		return: 'Arêtes[]',
 	},
-	// {
-	// 	name: 'voisins',
-	// 	parameters: [
-	// 		{
-	// 			'voisins'
-	// 		}
-	// 	],
-	// 	description: '',
-	// 	return: null,
-	// },
+	{
+		name: 'voisins',
+		parameters: [
+			{
+				type: 'voisins',
+				enterType: parameters.EnterParameter.E
+			}
+		],
+		description: '',
+		return: null,
+	},
 	{
 		name: '',
 		parameters: [],
