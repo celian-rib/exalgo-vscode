@@ -2,6 +2,7 @@
 - Install nodejs : https://nodejs.org/en/
 - Clone the project or fork it : ```git clone https://github.com/celian-rib/exalgo-vscode.git```
 - Install project dependencies : ```cd exalgo-vscode``` & ```npm i```
+- The ESlint vscode extension is required : https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ### Run the project
 - Open the vscode debugger, select the 'run extension' option and press start, a new vscode instance will open.
