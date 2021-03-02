@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getExalgoTypesString } from './ExalgoTypes';
+import { getExalgoTypesString } from './definitions/primitives';
 
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
