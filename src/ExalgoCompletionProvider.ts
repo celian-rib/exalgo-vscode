@@ -15,17 +15,16 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 	provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Thenable<vscode.CompletionItem[]> {
 		const completions: vscode.CompletionItem[] = [];
 
-		completions.push(new vscode.CompletionItem('int'));
-		completions.push(new vscode.CompletionItem('String'));
-		completions.push(new vscode.CompletionItem('boolean'));
-		completions.push(new vscode.CompletionItem('char'));
+		primitives.getExalgoPrimitivesString().forEach(element => {
+			completions.push(new vscode.CompletionItem(element));
+		});
 
 		const varCompletion = new vscode.CompletionItem('Var');
-		varCompletion.insertText = new vscode.SnippetString('Var ${1} : ${2|'+/* getExalgoTypesString()*/ +'|}');
+		varCompletion.insertText = new vscode.SnippetString('Var ${1} : ${2|' + primitives.getExalgoPrimitivesString() +'|} $0');
 		completions.push(varCompletion);
 
 		const functionCompletion = new vscode.CompletionItem('Fonction');
-		functionCompletion.insertText = new vscode.SnippetString('Fonction ${1}() : ${2|int,String,boolean|}\n\nDébut\n${0}\nFin');
+		functionCompletion.insertText = new vscode.SnippetString('Fonction ${1}() : ${2|int,String,boolean|}\n\nDébut\n$0\nFin');
 		completions.push(functionCompletion);
 
 
