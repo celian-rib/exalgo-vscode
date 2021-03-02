@@ -1,12 +1,12 @@
-export interface IExalgoType {
-	primitiv: string,
+export interface IExalgoPrimitives {
+	primitive: string,
 }
 
-export const exalgoTypes: IExalgoType[] = [
-	{ primitiv: 'entier' },
-	{ primitiv: 'réel' },
-	{ primitiv: 'caractère' },
-	{ primitiv: 'booléen' },
+export const exalgoTypes: IExalgoPrimitives[] = [
+	{ primitive: 'entier' },
+	{ primitive: 'réel' },
+	{ primitive: 'caractère' },
+	{ primitive: 'booléen' },
 ];
 
 /**
@@ -16,7 +16,7 @@ export const exalgoTypes: IExalgoType[] = [
 export function getExalgoTypesString(): string[] {
 	const result: string[] = [];
 	exalgoTypes.forEach(element => {
-		result.push(element.primitiv);
+		result.push(element.primitive);
 	});
 	return result;
 }
@@ -40,7 +40,7 @@ enum EnterParameter {
 }
 
 export interface IParameter {
-	type: IExalgoType | string,
+	type: IExalgoPrimitives | string,
 	enterType: EnterParameter,
 }
 
@@ -48,7 +48,7 @@ export interface IExalgoMethods {
 	name: string,
 	parameters: IParameter[] | null,
 	description: string,
-	return: IExalgoType | null,
+	return: IExalgoPrimitives | null,
 }
 
 
@@ -64,11 +64,11 @@ export const exalgoMethods: IExalgoMethods[] = [
 	{
 		name: 'entierAléatoire',
 		parameters: [
-			{ type: { primitiv: 'entier' }, enterType: EnterParameter.E },
+			{ type: { primitive: 'entier' }, enterType: EnterParameter.E },
 			{ type: '', enterType: EnterParameter.E }
 		],
 		description: 'Renvoie un entier aléatoire compris entre les premier paramètre (inclu) et le second paramètre',
-		return: { primitiv: 'entier' },
+		return: { primitive: 'entier' },
 	},
 	{
 		name: 'lire',
@@ -76,6 +76,6 @@ export const exalgoMethods: IExalgoMethods[] = [
 			{ type: 'chaîne', enterType: EnterParameter.E }
 		],
 		description: 'Demande à l\'utilisateur de rentrer une information',
-		return: { primitiv: 'chaîne' }
+		return: { primitive: 'chaîne' }
 	},
 ];

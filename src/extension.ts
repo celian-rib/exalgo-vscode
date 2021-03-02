@@ -10,15 +10,14 @@ import { ExalgoCompletionProvider } from './ExalgoCompletionProvider';
  */
 export function activate(context: vscode.ExtensionContext) {
 
+	//Creating the Exalgo completion from the ExalgoCompletionProvider class
+	const exalgoCompletion = vscode.languages.registerCompletionItemProvider('plaintext', new ExalgoCompletionProvider());
+
+	//Subscribe the Exalgo completion provider for this extension
+	context.subscriptions.push(exalgoCompletion);
+
 	// Show a popup in vscode
 	vscode.window.showInformationMessage('Exalgo language support activated !');
-
-
-	const exalgo = vscode.languages.registerCompletionItemProvider('plaintext', new ExalgoCompletionProvider());
-
-	//Ajouter a vscode une nouvelle feature
-	context.subscriptions.push(exalgo);
-
 	console.log('Exalgo extension activated');
 }
 
