@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getExalgoTypesString } from './definitions/primitives';
+import * as primitives from './definitions/primitives';
 
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
@@ -21,7 +21,7 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 		completions.push(new vscode.CompletionItem('char'));
 
 		const varCompletion = new vscode.CompletionItem('Var');
-		varCompletion.insertText = new vscode.SnippetString('Var ${1} : ${2|'+ getExalgoTypesString() +'|}');
+		varCompletion.insertText = new vscode.SnippetString('Var ${1} : ${2|'+/* getExalgoTypesString()*/ +'|}');
 		completions.push(varCompletion);
 
 		const functionCompletion = new vscode.CompletionItem('Fonction');
