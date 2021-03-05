@@ -21,12 +21,20 @@ export interface IExalgoMethods {
 	return: primitives.ExalgoPrimitives | null | string,
 }
 
+/**
+ *
+ */
+export function getAllMethods(): IExalgoMethods[] {
+	return exalgoMethods
+		.concat(exalgoMethodsGraphs)
+		.concat(exalgoMethodsDiGraphs);
+}
 
 export const exalgoMethods: IExalgoMethods[] = [
 	{
 		name: 'écrire',
 		parameters: [
-			{ type: '', enterType: parameters.EnterParameter.E }
+			{ type: 'chaîne', enterType: parameters.EnterParameter.E }
 		],
 		description: 'Affiche dans la console',
 		return: null,
@@ -35,7 +43,7 @@ export const exalgoMethods: IExalgoMethods[] = [
 		name: 'entierAléatoire',
 		parameters: [
 			{ type: primitives.ExalgoPrimitives.Entier, enterType: parameters.EnterParameter.E },
-			{ type: '', enterType: parameters.EnterParameter.E }
+			{ type: primitives.ExalgoPrimitives.Entier, enterType: parameters.EnterParameter.E }
 		],
 		description: 'Renvoie un entier aléatoire compris entre les premier paramètre (inclu) et le second paramètre',
 		return: primitives.ExalgoPrimitives.Entier,
