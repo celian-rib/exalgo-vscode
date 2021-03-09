@@ -19,16 +19,16 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 		 * @TODO check the document extension, and reprovide the completion items on active text editor change
 		 */
 
-		const completions: vscode.CompletionItem[] = [];
+		let completions: vscode.CompletionItem[] = [];
 
 		//Register all regular expressions
-		completions.concat(this.getAllRegExItems());
+		completions = completions.concat(this.getAllRegExItems());
 
 		//Register all primitives
-		completions.concat(this.getAllPrimitivesItems());
+		completions = completions.concat(this.getAllPrimitivesItems());
 
 		//Register all methods
-		completions.concat(this.getAllMethodsItems());
+		completions = completions.concat(this.getAllMethodsItems());
 
 		return Promise.resolve(completions);
 	}
