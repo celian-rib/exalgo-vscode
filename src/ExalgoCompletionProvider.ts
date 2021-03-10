@@ -82,10 +82,12 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 
 			//Foreach methods : parameters are created as a snippet string
 			element.parameters?.forEach((param: exalgo.IParameter) => {
-				if (param.type instanceof testTy)
-					params.push(param.type.name.toString());
-				else
+				if ((param.type as exalgo.IExalgoClass).name != undefined){ // Check if param.type is type of IExalgoClass
+					const c: exalgo.IExalgoClass = <exalgo.IExalgoClass>param.type; // Cast param.type into c: IExalgoClass so c.name will work
+					params.push(c.name.toString());
+				} else {
 					params.push(param.type.toString());
+				}
 
 				// if (param.type instanceof primitives.ExalgoPrimitives)
 				// 	params.push(param.type.toString());
