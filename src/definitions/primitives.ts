@@ -1,10 +1,5 @@
-export enum ExalgoPrimitives {
-	Entier,
-	Réel,
-	Caractère,
-	Booléen
-}
 
+import { ExalgoPrimitives } from './interfaces';
 
 /**
  * Return the primitives enum in an array of string

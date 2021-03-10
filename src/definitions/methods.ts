@@ -1,6 +1,5 @@
-import * as primitives from './primitives';
-import * as parameters from './parameters';
-
+import * as classes from './classes';
+import * as exalgo from './interfaces';
 
 /**
  * Convert exalgoMethods in a string array
@@ -14,27 +13,20 @@ export function getExalgoMethodsString(): string[] {
 	return result;
 }
 
-export interface IExalgoMethods {
-	name: string,
-	parameters: parameters.IParameter[] | null,
-	description: string,
-	return: primitives.ExalgoPrimitives | null | string,
-}
-
 /**
  *
  */
-export function getAllMethods(): IExalgoMethods[] {
+export function getAllMethods(): exalgo.IExalgoMethods[] {
 	return exalgoMethods
 		.concat(exalgoMethodsGraphs)
 		.concat(exalgoMethodsDiGraphs);
 }
 
-export const exalgoMethods: IExalgoMethods[] = [
+export const exalgoMethods: exalgo.IExalgoMethods[] = [
 	{
 		name: 'écrire',
 		parameters: [
-			{ type: 'chaîne', enterType: parameters.EnterParameter.E }
+			{ type: classes.Chaine, enterType: exalgo.EnterParameter.E }
 		],
 		description: 'Affiche dans la console',
 		return: null,
@@ -42,23 +34,23 @@ export const exalgoMethods: IExalgoMethods[] = [
 	{
 		name: 'entierAléatoire',
 		parameters: [
-			{ type: primitives.ExalgoPrimitives.Entier, enterType: parameters.EnterParameter.E },
-			{ type: primitives.ExalgoPrimitives.Entier, enterType: parameters.EnterParameter.E }
+			{ type: exalgo.ExalgoPrimitives.Entier, enterType: exalgo.EnterParameter.E },
+			{ type: exalgo.ExalgoPrimitives.Entier, enterType: exalgo.EnterParameter.E }
 		],
 		description: 'Renvoie un entier aléatoire compris entre les premier paramètre (inclu) et le second paramètre',
-		return: primitives.ExalgoPrimitives.Entier,
+		return: { type: exalgo.ExalgoPrimitives.Entier }
 	},
 	{
 		name: 'lire',
 		parameters: [
-			{ type: 'chaîne', enterType: parameters.EnterParameter.E }
+			{ type: classes.Chaine, enterType: exalgo.EnterParameter.E }
 		],
 		description: 'Demande à l\'utilisateur de rentrer une information',
-		return: 'chaîne'
+		return: { type: classes.Chaine }
 	},
 ];
 
-export const exalgoMethodsGraphs: IExalgoMethods[] = [
+export const exalgoMethodsGraphs: exalgo.IExalgoMethods[] = [
 	{
 		name: 'créerGraphe',
 		parameters: null,
@@ -69,34 +61,34 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 		name: 'ajouterSommet',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			},
 		],
 		description: 'Ajoute un sommet dans le graphe',
-		return: 'Sommet',
+		return: { type: classes.Sommet },
 	},
 	{
 		name: 'ajouterArête',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			},
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: 'Ajoute une arête entre 2 sommets dans le graphe',
-		return: 'Arete',
+		return: { type: classes.Arete },
 	},
 	{
 		name: 'supprimerSommets',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: 'Supprime un sommet dans le graphe',
@@ -106,8 +98,8 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 		name: 'supprimerArête',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: 'Supprime une arête dans le graphe',
@@ -117,98 +109,74 @@ export const exalgoMethodsGraphs: IExalgoMethods[] = [
 		name: 'nombreSommets',
 		parameters: [],
 		description: 'Compte le nombre de sommets du graphe',
-		return: primitives.ExalgoPrimitives.Entier,
+		return: { type: exalgo.ExalgoPrimitives.Entier }
 	},
 	{
 		name: 'nombreArêtes',
 		parameters: [],
-		description: '',
-		return: '',
+		description: 'Compte le nombre d\'arête du graphe',
+		return: { type: exalgo.ExalgoPrimitives.Entier },
 	},
 	{
 		name: 'sommets',
 		parameters: null,
 		description: 'Retourne un tableau de tous les sommets',
-		return: 'Sommet[]',
+		return: { type: classes.Sommet, isArray: true },
 	},
 	{
 		name: 'arêtes',
-		parameters: [],
+		parameters: null,
 		description: 'Retourne un tableau de toutes les arêtes',
-		return: 'Arêtes[]',
+		return: { type: classes.Arete, isArray: true },
 	},
 	{
 		name: 'voisins',
 		parameters: [
 			{
-				type: 'voisins',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: '',
-		return: null,
-	},
-	{
-		name: '',
-		parameters: [],
-		description: '',
-		return: null,
-	},
-	{
-		name: '',
-		parameters: [],
-		description: '',
-		return: null,
-	},
-	{
-		name: '',
-		parameters: [],
-		description: '',
-		return: null,
-	},
-	{
-		name: '',
-		parameters: [],
-		description: '',
-		return: null,
+		return: { type: classes.Sommet, isArray: true },
 	},
 ];
 
-export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
+export const exalgoMethodsDiGraphs: exalgo.IExalgoMethods[] = [
 	{
 		name: 'créerDiGraphe',
 		parameters: null,
 		description: 'Créer un graphe orienté',
-		return: 'null',
+		return: null,
 	},
 	{
 		name: 'ajouterSommet',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			},
 		],
 		description: 'Ajoute un sommet dans le graphe',
-		return: 'Sommet',
+		return: { type: classes.Sommet },
 	},
 	{
 		name: 'ajouterArc',
 		parameters: [
 			{
-				type: 'Arc',
-				enterType: parameters.EnterParameter.E
+				type: classes.Arc,
+				enterType: exalgo.EnterParameter.E
 			},
 		],
 		description: 'Ajoute un arc dans le graphe',
-		return: 'Arc',
+		return: { type: classes.Arc },
 	},
 	{
 		name: 'supprimerSommets',
 		parameters: [
 			{
-				type: 'Sommet',
-				enterType: parameters.EnterParameter.E
+				type: classes.Sommet,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: 'Supprime un sommet dans le graphe',
@@ -218,8 +186,8 @@ export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
 		name: 'supprimerArc',
 		parameters: [
 			{
-				type: 'Arc',
-				enterType: parameters.EnterParameter.E
+				type: classes.Arc,
+				enterType: exalgo.EnterParameter.E
 			}
 		],
 		description: 'Supprime un arc dans le graphe',
@@ -229,18 +197,18 @@ export const exalgoMethodsDiGraphs: IExalgoMethods[] = [
 		name: 'nombreSommets',
 		parameters: [],
 		description: 'Compte le nombre de sommets du graphe',
-		return: primitives.ExalgoPrimitives.Entier,
+		return: { type: exalgo.ExalgoPrimitives.Entier },
 	},
 	{
 		name: 'nombreArc',
 		parameters: [],
 		description: 'Compte le nombre d\'arc du graphe',
-		return: primitives.ExalgoPrimitives.Entier,
+		return: { type: exalgo.ExalgoPrimitives.Entier },
 	},
 	{
 		name: 'sommets',
 		parameters: null,
 		description: 'Retourne un tableau de tous les sommets',
-		return: 'Sommet[]',
+		return: { type: classes.Sommet, isArray: true },
 	},
 ];
