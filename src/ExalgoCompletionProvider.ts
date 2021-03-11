@@ -4,11 +4,6 @@ import * as methods from './definitions/methods';
 import * as classes from './definitions/classes';
 import * as exalgo from './definitions/interfaces';
 
-
-type testType = {
-	name: string
-}
-
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
  */
