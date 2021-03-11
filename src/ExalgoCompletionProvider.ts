@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
 import * as primitives from './definitions/primitives';
 import * as methods from './definitions/methods';
-import * as parameters from './definitions/parameters';
+import * as classes from './definitions/classes';
+import * as exalgo from './definitions/interfaces';
 
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
@@ -30,6 +31,9 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 		//Register all methods
 		completions = completions.concat(this.getAllMethodsItems());
 
+		//Register all classes
+		completions = completions.concat(this.getAllClassesItems());
+
 		return Promise.resolve(completions);
 	}
 
@@ -46,6 +50,19 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 	}
 
 	/**
+	 * Create all the completion items related to the exalgo's classes
+	 * @return all exalgo classes items
+	 */
+	getAllClassesItems(): vscode.CompletionItem[] {
+		const items: vscode.CompletionItem[] = [];
+		classes.exalgoClasses.forEach(element => {
+			items.push(new vscode.CompletionItem(element.name, vscode.CompletionItemKind.Class));
+		});
+		return items;
+	}
+
+
+	/**
 	 * Create all the completion items related to the exalgo's methods
 	 * @return all exalgo methods items
 	 */
@@ -59,8 +76,14 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 			let pcount = 1;
 
 			//Foreach methods : parameters are created as a snippet string
-			element.parameters?.forEach((param: parameters.IParameter) => {
-				params.push(param.type.toString());
+			element.parameters?.forEach((param: exalgo.IParameter) => {
+				if ((param.type as exalgo.IExalgoClass).name != undefined){ // Check if param.type is type of IExalgoClass
+					const c: exalgo.IExalgoClass = <exalgo.IExalgoClass>param.type; // Cast param.type into c: IExalgoClass so c.name will work
+					params.push(c.name.toString());
+				} else {
+					params.push(param.type.toString());
+				}
+
 				snippetsParams += '${' + pcount + '}';
 				if (pcount != element.parameters?.length)//If not last param, we add to the string coma and space:
 					snippetsParams += ', ';
