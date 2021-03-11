@@ -4,11 +4,6 @@ import * as methods from './definitions/methods';
 import * as classes from './definitions/classes';
 import * as exalgo from './definitions/interfaces';
 
-
-type testType = {
-	name: string
-}
-
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
  */
@@ -56,7 +51,7 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 
 	/**
 	 * Create all the completion items related to the exalgo's classes
-	 * @return
+	 * @return all exalgo classes items
 	 */
 	getAllClassesItems(): vscode.CompletionItem[] {
 		const items: vscode.CompletionItem[] = [];
@@ -88,11 +83,6 @@ export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 				} else {
 					params.push(param.type.toString());
 				}
-
-				// if (param.type instanceof primitives.ExalgoPrimitives)
-				// 	params.push(param.type.toString());
-				// else
-				// 	params.push(param.type.name.toString());
 
 				snippetsParams += '${' + pcount + '}';
 				if (pcount != element.parameters?.length)//If not last param, we add to the string coma and space:
