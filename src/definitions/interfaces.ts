@@ -22,10 +22,10 @@ export interface IParameter {
 }
 
 export enum ExalgoPrimitives {
-	Entier,
-	Réel,
-	Caractère,
-	Booléen
+	Entier = 'Entier',
+	Reel = 'Réel',
+	Caractere = 'Caractère',
+	Booleen = 'Booléen'
 }
 
 export interface IExalgoReturnType {
