@@ -7,7 +7,7 @@ import * as exalgo from './definitions/interfaces';
 /**
  * Provide the Exlago language completion by extending the CompletionItemProvider
  */
-export class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
+export default class ExalgoCompletionProvider implements vscode.CompletionItemProvider {
 
 	/**
 	 * Return all the completion items of the Exalgo languages
